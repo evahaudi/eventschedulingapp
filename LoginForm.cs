@@ -23,7 +23,7 @@ namespace Schedulingproject
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoginButton(object sender, EventArgs e)
         {
             string username = UsernameTextBox.Text;
             string password = PasswordTextBox.Text;
@@ -48,9 +48,8 @@ namespace Schedulingproject
                         string successMessage = "Login Successful!";
                         string translatedMessage = TranslateText(successMessage, userLanguage);
                         MessageBox.Show(translatedMessage);
-
-                        CustomerForm form2 = new CustomerForm();
-                        form2.Show(); // Show Form2
+                        CustomerForm form1 = new CustomerForm();
+                        form1.Show(); // Show Form2
 
                         this.Hide(); // Hide Form1 (current form)
                         // Add code here to navigate to another form or perform necessary actions upon successful login
