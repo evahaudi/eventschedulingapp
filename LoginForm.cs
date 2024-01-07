@@ -8,12 +8,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Schedulingproject
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         private const string IPSTACK_API_KEY = " 67e66dce9544524be732c9c7917d35d1";
         private const string GOOGLE_TRANSLATE_API_KEY = "AIzaSyCrmMJIUwka1bSH6jX_UUz6nzyRLNtwgdY";
 
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -25,8 +25,8 @@ namespace Schedulingproject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text;
-            string password = textBox2.Text;
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
 
             string connectionString = "Server=localhost;Database=client_schedule;Uid=root;Pwd=@2023Germany;";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -48,6 +48,11 @@ namespace Schedulingproject
                         string successMessage = "Login Successful!";
                         string translatedMessage = TranslateText(successMessage, userLanguage);
                         MessageBox.Show(translatedMessage);
+
+                        CustomerForm form2 = new CustomerForm();
+                        form2.Show(); // Show Form2
+
+                        this.Hide(); // Hide Form1 (current form)
                         // Add code here to navigate to another form or perform necessary actions upon successful login
                     }
                     else
@@ -95,6 +100,11 @@ namespace Schedulingproject
                 MessageBox.Show("Error translating text: " + ex.Message);
                 return text; // Return original text in case of translation failure
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
